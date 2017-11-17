@@ -43,6 +43,11 @@ class Task
     Task.find(id)
   end
 
+  def self.destroy(id)
+    database.execute("DELETE FROM tasks
+                      WHERE id = ?;", id)
+  end
+
   def self.database
     database = SQLite3::Database.new("db/task_manager_development.db")
     database.results_as_hash = true
