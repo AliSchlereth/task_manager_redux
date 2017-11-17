@@ -1,4 +1,5 @@
 require "./app/models/task.rb"
+require "pry"
 
 class TaskManagerApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
@@ -33,10 +34,9 @@ class TaskManagerApp < Sinatra::Base
     erb :show
   end
 
-
-  # put '/tasks/:id' do |id|
-  #   Task.update(id.to_i, params[:task])
-  #   redirect "/tasks/#{id}"
-  # end
+  put '/tasks/:id' do |id|
+    Task.update(id.to_i, params[:task])
+    redirect "/tasks/#{id}"
+  end
 
 end
